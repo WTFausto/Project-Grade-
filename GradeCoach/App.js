@@ -1,38 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-
-import useCachedResources from './hooks/useCachedResources';
-
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-
-import LinkingConfiguration from './navigation/LinkingConfiguration';
-
-const Stack = createStackNavigator();
-
-export default function App(props) {
-  const isLoadingComplete = useCachedResources();
-
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+import React from 'react'
+import { StyleSheet, Platform, Image, Text, View } from 'react-native'
+import { SwitchNavigator } from 'react-navigation'
+// import the different screens
+import Loading from './screens/Loading'
+import SignUp from './screens/SignUp'
+import LogIn from './screens/LogIn'
+import Main from './screens/Main'
+// create our app's navigation stack
+const App = SwitchNavigator(
+  {
+    Loading,
+    SignUp,
+    Login,
+    Main
   },
-});
+  {
+    initialRouteName: 'Loading'
+  }
+)
+export default App
