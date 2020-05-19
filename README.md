@@ -1,8 +1,12 @@
 # Project-Grade
 an attempt at an app for tracking and simulation of desired grades <br/>
 
-Technologies used: <br/>
+Tech Stack <br/>
 
 React Native <br/>
 
 Expo <br/>
+
+Firebase <br/>
+
+React Navigation <br/>
